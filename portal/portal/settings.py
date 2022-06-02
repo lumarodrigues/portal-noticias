@@ -15,7 +15,7 @@ from decouple import config, Csv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -91,10 +91,10 @@ WSGI_APPLICATION = 'portal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NOSQL_ENGINE': config('NOSQL_ENGINE'),
-        'NOSQL_NAME': config('NOSQL_DATABASE'),
-        'NOSQL_HOST': config('NOSQL_HOST'),
-        'NOSQL_PORT': config('NOSQL_PORT'),
+        'ENGINE': 'djongo',
+        'NAME': 'portal_db',
+        'HOST': config('NOSQL_HOST'),
+        'PORT': config('NOSQL_PORT'),
     }
 }
 
