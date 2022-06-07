@@ -7,4 +7,3 @@ class Noticia(models.Model):
     conteudo = models.TextField('Conteúdo')
     data_publicacao = models.DateTimeField('Criado em', auto_now_add=True)
     data_edicao = models.DateTimeField('Editado em', auto_now=True)
-

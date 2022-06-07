@@ -10,9 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-import os
-from decouple import config, Csv
 from pathlib import Path
+from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'posts.apps.PostsConfig',
+    'portal.posts.apps.PostsConfig',
 
     # CORS
     'corsheaders',
@@ -60,10 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-    config('HOST'),
-)
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'portal.urls'
 
@@ -91,11 +87,13 @@ WSGI_APPLICATION = 'portal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'portal_db',
-        'HOST': config('NOSQL_HOST'),
-        'PORT': config('NOSQL_PORT'),
-    }
+        'ENGINE': config('SQL_ENGINE'),
+        'NAME': config('SQL_DATABASE'),
+        'USER': config('SQL_USER'),
+        'PASSWORD': config('SQL_PASSWORD'),
+        'HOST': config('SQL_HOST'),
+        'PORT': config('SQL_PORT'),
+    },
 }
 
 
