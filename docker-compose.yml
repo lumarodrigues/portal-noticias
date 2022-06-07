@@ -1,0 +1,35 @@
+version: "3.7"
+  
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - SQL_DB=${SQL_DATABASE}
+      - SQL_USER=${SQL_USER}
+      - SQL_PASSWORD=${SQL_PASSWORD}
+    ports:
+      - ${DB_PORT}:5432
+  web:
+    build: .
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+    volumes:
+      - ./portal:/code
+    ports:
+      - ${APP_PORT}:8080
+    environment:
+      - SQL_ENGINE
+      - SQL_DATABASE
+      - SQL_USER
+      - SQL_PASSWORD
+      - SQL_HOST
+      - SQL_PORT
+      - SECRET_KEY
+      - DEBUG
+      - ALLOWED_HOSTS
+      - CORS_HOST
+      - HOST
+      - DB_PORT
+    depends_on:
+      - db
