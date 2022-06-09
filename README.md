@@ -63,3 +63,9 @@ Um CRUD em DRF para o jornal Abacate News
     ```bash
     docker-compose run --rm web pytest
     ```
+
+* Para subir o Redis para cache das notícias
+
+    ```bash
+    docker-compose up cache
+    ```
