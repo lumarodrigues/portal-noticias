@@ -57,3 +57,9 @@ Um CRUD em DRF para o jornal Abacate News
     ```bash
     docker-compose run --rm web flake8 .
     ```
+
+* Para rodar os testes
+
+    ```bash
+    docker-compose run --rm web pytest
+    ```
